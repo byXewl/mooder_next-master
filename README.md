@@ -1,10 +1,10 @@
 # **说明**
 
-> 原项目：mooder和mooder_next(https://github.com/cnskis/mooder_next)
+> 原项目：mooder和mooder_next(github.com/cnskis/mooder_next)
 
-安全团队贡献系统
+安全团队贡献平台系统
 
-功能：提交漏洞报告/资源文章获取积分，积分兑换，rank排名等功能
+功能：提交漏洞报告/资源文章获取积分，积分兑换，rank排名等功能。
 
 ![image-20240706025829599](http://cdn.33129999.xyz/mk_img/image-20240706025829599.png)
 

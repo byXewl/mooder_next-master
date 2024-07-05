@@ -1,6 +1,6 @@
 # **说明**
 
-> 原项目：mooder和mooder_next
+> 原项目：mooder和mooder_next(https://github.com/cnskis/mooder_next)
 
 安全团队贡献系统
 

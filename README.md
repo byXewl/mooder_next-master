@@ -31,7 +31,7 @@ docker load -i postgres.tar
 默认web服务容器映射端口80:80
 postgres数据库容器映射端口5432:5432
 
-可自行修改docker-compose.yml中宿主机端口。
+可自行配置docker-compose.yml中宿主机端口以及性能等。
 ```
 
 ### **2、基础配置**

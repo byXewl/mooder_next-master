@@ -293,7 +293,8 @@ class JavascriptView(LoginRequiredMixin, TemplateView):
     content_type = 'text/javascript'
 
     def dispatch(self, request, *args, **kwargs):
-        referer = request.META.get('HTTP_REFERER', '')
+        # 这里的判断，不注释掉可能反代端口不同，造成403
+        # referer = request.META.get('HTTP_REFERER', '')
         # try:
         #     u1 = urlparse(referer)
         #     u2 = urlparse(request.build_absolute_uri())

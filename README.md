@@ -36,18 +36,15 @@ postgres数据库容器映射端口5432:5432
 
 ### **2、基础配置**
 
-使用数据库客户端连接postgres数据库，archives_category表添加几个漏洞类别记录。
-
-![image-20240705163504262](http://cdn.33129999.xyz/mk_img/image-20240705163504262.png)
-
-
-
 访问服务器IP:80即可。
 
 初始账号信息在.env文件中。
 
 至此docker部署完成。
 
+站点配置：
+登录管理员，访问/admin
+![image-20240709164135512](http://cdn.33129999.xyz/mk_img/image-20240709164135512.png)
 
 
 ### **3、nginx+python(django)+postgres部署**
@@ -70,7 +67,7 @@ export $(grep -v '^#' .env | xargs)
 ```
 
 至此重启，.env中环境变量生效。
-
+等操作
 
 
 **使用nginx反向代理python(django)后端，并映射静态文件的路径，启动后端即可。**

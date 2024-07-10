@@ -47,27 +47,72 @@ postgres数据库容器映射端口5432:5432
 ![image-20240709164135512](http://cdn.33129999.xyz/mk_img/image-20240709164135512.png)
 
 
-### **3、nginx+python(django)+postgres部署**
+### **3、nginx+python(django)+postgresql源码部署**
 
-使用这种部署，需要修.env文件中postgres数据库IP，并配置系统环境变量。
-
-
-
-**配置系统环境变量的一种方式：**
-
+使用这种部署，推荐宝塔。
+环境准备
 ```
-pip install direnv
+系统的openssl版本一定大于1.1.1，部分centos系统可能不满足。
+安装好python3和pip环境。
+安装好postgresql数据库环境，账号可以使用默认postgres，保证有建表权限。
+```
+```
+进入主目录
+apt-get update && apt-get install libpq-dev libjpeg-dev zlib1g-dev libfreetype6-dev
+pip install -r requests.txt
+
+进入mooder目录
+复制一份settings_production.py文件名为settings_production1.py
+编辑settings_production1.py里面内容
+把用到环境变量的全部硬编码，如：
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+    }
+}
+不同数据库安装：
+sudo apt-get install postgresql-client
+pip install psycopg2
+
+sudo apt-get install mysql-client
+pip install mysqlclient
+
+返回主目录
+openssl rand -out .secretkey 64
+```
+准备运行
+```
+设置一个刚刚创建的配置文件名为环境变量：
+export DJANGO_SETTINGS_MODULE=mooder.settings_production1
+
+初始化数据库：
+python3 ./manage.py migrate
+
+生成静态文件目录static_cdn：
+python3 ./manage.py collectstatic
+
+创建管理员信息，回车后输入：
+python3 manage.py createsuperuser
+
+测试运行后端：
+python3 ./manage.py runserver 8080
+
+用wget 127.0.0.1:8080命令测试运行端口
+```
+nginx反向代理+nginx映射静态文件和附件+gunicorn服务启动后端
+```
+后端：
+项目根目录运行
+exec gunicorn -w 2 -k gevent -b 0.0.0.0:8080 mooder.wsgi
+
+nginx：
+nginx.conf配置文件参考：
+需要映射 项目/mooder/static_cdn/目录(静态资源) 和 /data目录(附件上传)
+再反向代理127.0.0.1:后端端口即可。
 ```
 
-再在.env同目录下创建.envrc文件：
-
-```
-# .envrc
-export $(grep -v '^#' .env | xargs)
-```
-
-至此重启，.env中环境变量生效。
-等操作
-
-
-**使用nginx反向代理python(django)后端，并映射静态文件的路径，启动后端即可。**

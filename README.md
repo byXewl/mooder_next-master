@@ -114,5 +114,15 @@ nginx：
 nginx.conf配置文件参考：
 需要映射 项目/mooder/static_cdn/目录(静态资源) 和 /data目录(附件上传)
 再反向代理127.0.0.1:后端端口即可。
+  
+  # 静态文件服务
+  location /static/ {
+      alias /www/python_pro/mooder_next-master/mooder/static_cdn/;
+  }
+
+  # 媒体上传文件服务
+  location /media/ {
+      alias /data/;  
+  }
 ```
 

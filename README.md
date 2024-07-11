@@ -53,13 +53,13 @@ postgres数据库容器映射端口5432:5432
 
 Linux环境准备
 ```
-系统的openssl版本一定大于1.1.1，部分centos老系统可能不满足。
-openssl version查看
+系统的openssl版本一定大于1.1.1，部分centos老系统可能不满足
+openssl version查看。
 安装好python3和pip环境。
-安装好postgresql或mysql数据库环境，账号可以使用默认postgres，保证有建表权限。
+安装好postgresql或mysql数据库环境，账号可以使用默认postgres，保证有建表权限。mysql需要先建一个数据库作为项目数据库。
 
-python环境可以用f8x一键配置
-数据库可以用宝塔一键安装
+python环境可以用f8x一键配置。
+数据库可以用宝塔一键安装。
 ```
 ```
 进入主目录:

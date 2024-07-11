@@ -144,3 +144,6 @@ nginx.conf配置文件参考：
   }
 ```
 
+![image-20240711162724616](http://cdn.33129999.xyz/mk_img/image-20240711162724616.png)
+
+![image-20240711162807814](http://cdn.33129999.xyz/mk_img/image-20240711162807814.png)

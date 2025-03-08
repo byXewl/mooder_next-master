@@ -53,9 +53,9 @@ postgres数据库容器映射端口5432:5432
 
 Linux环境准备
 ```
-系统的openssl版本一定大于1.1.1，部分centos老系统可能不满足
+系统的openssl版本一定>=1.1.1，部分centos老系统可能不满足
 openssl version查看。
-安装好python3和pip环境。
+安装好python3.8和pip环境。
 安装好postgresql或mysql数据库环境，账号可以使用默认postgres，保证有建表权限。mysql需要先建一个数据库作为项目数据库。
 
 python环境可以用f8x一键配置。
@@ -65,7 +65,7 @@ python环境可以用f8x一键配置。
 进入主目录:
 apt-get update && apt-get install libpq-dev libjpeg-dev zlib1g-dev libfreetype6-dev
 
-pip install -r requests.txt
+pip install -r requirements.txt
 
 进入mooder目录:
 复制一份settings_production.py文件名为settings_production1.py
